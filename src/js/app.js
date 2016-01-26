@@ -1,12 +1,12 @@
 angular
-    .module('BookingApp', ['ui.bootstrap', 'ui.router'])
+    .module('BookingApp', ['ui.bootstrap', 'ui.router', 'BookingApp.directives'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('flights', {
                 url: '/flights',
-                template: '<h1>Flights</h1>'
+                templateUrl: 'templates/flights.html'
             })
             .state('hotels', {
                 url: '/hotels',
@@ -35,12 +35,18 @@ angular
             $state.go(stateName);
         };
 
+        function BookingModel() {
+            this.startDate = new Date();
+            this.endDate = new Date();
+        }
+
         //TODO: refactor, smells a bit
         $scope.$watch(function () {
             return $state.current.name;
         }, function (state) {
             if(state) {
                 $scope.tabs[state].isActive = true;
+                $scope.bookingModel = new BookingModel();
             }
         });
     });

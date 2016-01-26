@@ -1,0 +1,12 @@
+<label for="bk-datepicker-{{ $id }}">{{ title }}</label>
+<input type="text"
+       id="bk-datepicker-{{ $id }}"
+       class="form-control"
+       uib-datepicker-popup="yyyy-MM-dd"
+       ng-model="model"
+       ng-required="true"
+       close-text="Close"
+       placeholder="Click to open datepicker"
+
+       is-open="open"
+       ng-focus="open = true"/>
