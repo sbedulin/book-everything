@@ -6,7 +6,10 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.16/angular-ui-router.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+    <script src="directives/bk.directives.js"></script>
     <script src="directives/datepicker/datepicker.js"></script>
+    <script src="directives/location/location.service.js"></script>
+    <script src="directives/location/location.js"></script>
     <script src="js/app.js"></script>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -47,11 +50,12 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <pre>{{ vm.bookingModel | json }}</pre>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
+                            <div class="pull-left">
+                                <button
+                                    ng-click="showModel = !showModel"
+                                    type="button"
+                                    class="btn btn-link">{{ showModel ? 'Hide' : 'Show' }} model</button>
+                            </div>
                             <div class="pull-right">
                                 <button
                                     ng-click="vm.clear()"
@@ -70,6 +74,11 @@
                             <span ng-bind-html="h"></span>
                             <i ng-click="vm.removeFromHistory($index)"
                                class="glyphicon glyphicon-remove pull-right"></i>
+                        </div>
+                    </div>
+                    <div ng-if="showModel" class="row">
+                        <div class="col-sm-12">
+                            <pre>{{ vm.bookingModel | json }}</pre>
                         </div>
                     </div>
                 </form>

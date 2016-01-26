@@ -1,0 +1,9 @@
+<label for="bk-location-{{ ::$id }}">{{ ::title }}</label>
+<input type="text"
+       id="bk-location-{{ ::$id }}"
+       ng-model="model"
+       placeholder="{{ ::title }}"
+       uib-typeahead="address for address in getLocation($viewValue)"
+       typeahead-loading="loadingLocations"
+       typeahead-no-results="noResults"
+       class="form-control">

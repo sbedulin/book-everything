@@ -1,6 +1,6 @@
-<label for="bk-datepicker-{{ $id }}">{{ title }}</label>
+<label for="bk-datepicker-{{ ::$id }}">{{ ::title }}</label>
 <input type="text"
-       id="bk-datepicker-{{ $id }}"
+       id="bk-datepicker-{{ ::$id }}"
        class="form-control"
        uib-datepicker-popup="yyyy-MM-dd"
        ng-model="model"

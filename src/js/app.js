@@ -1,5 +1,5 @@
 angular
-    .module('BookingApp', ['ngSanitize', 'ui.bootstrap', 'ui.router', 'BookingApp.directives'])
+    .module('BookingApp', ['ngSanitize', 'ui.bootstrap', 'ui.router', 'BookingApp.bkDirectives'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 
@@ -74,7 +74,7 @@ angular
                     return function () {
                         return base() + ', ' +
                             this.location + ', ' +
-                            Array(Number(this.rating) + 1).join('&#10038;');
+                            Array(Number(this.rating) + 1).join('★');
                     };
                 })(this.toString.bind(this));
             }
@@ -87,7 +87,7 @@ angular
 
                 this.toString = (function (base) {
                     return function () {
-                        return base() + ', ' + this.location + ', ' + this.type;
+                        return base() + ', ' + this.location + ' 🚗 ' + this.type;
                     };
                 })(this.toString.bind(this));
             }

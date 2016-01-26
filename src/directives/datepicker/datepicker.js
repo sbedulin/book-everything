@@ -1,5 +1,5 @@
 angular
-    .module('BookingApp.directives', ['ui.bootstrap'])
+    .module('BookingApp.bkDirectives')
     .directive('bkDatepicker', function () {
         return {
             scope: {
