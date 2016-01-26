@@ -1,3 +1,5 @@
+Live version: https://book-everything.herokuapp.com
+
 To run Website locally follow these steps:
 
 1. `npm install`
