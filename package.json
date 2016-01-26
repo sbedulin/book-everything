@@ -22,5 +22,9 @@
     "copyfiles": "^0.2.1",
     "http-server": "^0.8.5",
     "moment": "^2.11.1"
+  },
+  "engines": {
+    "node": "5.4.0",
+    "npm": "2.14.3"
   }
 }
