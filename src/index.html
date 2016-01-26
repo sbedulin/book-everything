@@ -12,43 +12,18 @@
 <body>
 <div ng-controller="BookingCtrl"
      class="main container">
-    <!-- TODO: use default bootstrap tabs instead -->
+    <!-- TODO: use default bootstrap tabs instead, or event better reimplement the component -->
 
     <uib-tabset class="tabs-left">
         <uib-tab ng-repeat="tab in tabs"
-                 active="tab.active">
+                 active="tab.isActive"
+                 select="select(tab.title)">
 
             <uib-tab-heading>
                 <i class="glyphicon glyphicon-info-sign"></i> {{ tab.title }}
             </uib-tab-heading>
 
-            <div class="container">
-                <form>
-                    <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label>Start Date</label>
-                            <input type="text" class="form-control" placeholder="Start Date">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>End Date</label>
-                            <input type="text" class="form-control" placeholder="End Date">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {{ tab.title }} specific
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-link">CLEAR</button>
-                                <button type="button" class="btn btn-primary">SEARCH</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <ui-view />
 
         </uib-tab>
     </uib-tabset>

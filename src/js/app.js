@@ -1,45 +1,46 @@
 angular
     .module('BookingApp', ['ui.bootstrap', 'ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
-        // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise('/');
 
-        /*
         $stateProvider
-            .state('state1', {
-                url: "/state1",
-                templateUrl: "partials/state1.html"
+            .state('flights', {
+                url: '/flights',
+                template: '<h1>Flights</h1>'
             })
-            .state('state1.list', {
-                url: "/list",
-                templateUrl: "partials/state1.list.html",
-                controller: function($scope) {
-                    $scope.items = ["A", "List", "Of", "Items"];
-                }
+            .state('hotels', {
+                url: '/hotels',
+                template: '<h1>Hotels</h1>'
             })
-            .state('state2', {
-                url: "/state2",
-                templateUrl: "partials/state2.html"
-            })
-            .state('state2.list', {
-                url: "/list",
-                templateUrl: "partials/state2.list.html",
-                controller: function($scope) {
-                    $scope.things = ["A", "Set", "Of", "Things"];
-                }
+            .state('cars', {
+                url: '/cars',
+                template: '<h1>Cars</h1>'
             });
-        */
     })
-    .controller('BookingCtrl', function ($scope) {
-        $scope.tabs = [
-            {
+    .controller('BookingCtrl', function ($scope, $state) {
+        $scope.tabs = {
+            flights: {
                 title: 'Flights'
             },
-            {
+            hotels: {
                 title: 'Hotels'
             },
-            {
+            cars: {
                 title: 'Cars'
             }
-        ];
+        };
+
+        $scope.select = function (tabName) {
+            var stateName = tabName.toLowerCase();
+            $state.go(stateName);
+        };
+
+        //TODO: refactor, smells a bit
+        $scope.$watch(function () {
+            return $state.current.name;
+        }, function (state) {
+            if(state) {
+                $scope.tabs[state].isActive = true;
+            }
+        });
     });
