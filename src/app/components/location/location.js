@@ -9,6 +9,6 @@ angular
             controller: function ($scope, Location) {
                 $scope.getLocation = Location.getLocation;
             },
-            templateUrl: 'directives/location/location.html'
+            templateUrl: 'app/components/location/location.html'
         };
     });

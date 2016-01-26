@@ -6,6 +6,6 @@ angular
                 model: '=',
                 title: '@'
             },
-            templateUrl: 'directives/datepicker/datepicker.html'
+            templateUrl: 'app/components/datepicker/datepicker.html'
         };
     });

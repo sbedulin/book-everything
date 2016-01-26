@@ -1,22 +1,5 @@
 angular
-    .module('BookingApp', ['ngSanitize', 'ui.bootstrap', 'ui.router', 'BookingApp.bkDirectives'])
-    .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
-
-        $stateProvider
-            .state('flights', {
-                url: '/flights',
-                templateUrl: 'templates/flights.html'
-            })
-            .state('hotels', {
-                url: '/hotels',
-                templateUrl: 'templates/hotels.html'
-            })
-            .state('cars', {
-                url: '/cars',
-                templateUrl: 'templates/cars.html'
-            });
-    })
+    .module('BookingApp')
     .controller('BookingCtrl', function ($scope, $state) {
         var vm = this;
 
