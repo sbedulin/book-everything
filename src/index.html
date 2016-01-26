@@ -2,8 +2,10 @@
 <html ng-app="BookingApp">
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.1.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.16/angular-ui-router.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
     <script src="directives/datepicker/datepicker.js"></script>
     <script src="js/app.js"></script>
 
@@ -11,14 +13,14 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-<div ng-controller="BookingCtrl"
+<div ng-controller="BookingCtrl as vm"
      class="main container">
     <!-- TODO: use default bootstrap tabs instead, or event better reimplement the component -->
 
     <uib-tabset class="tabs-left">
-        <uib-tab ng-repeat="tab in tabs"
+        <uib-tab ng-repeat="tab in vm.tabs"
                  active="tab.isActive"
-                 select="select(tab.title)">
+                 select="vm.select(tab.title)">
 
             <uib-tab-heading>
                 <i class="glyphicon glyphicon-info-sign"></i> {{ tab.title }}
@@ -30,12 +32,12 @@
                         <div class="col-sm-6">
                             <bk-datepicker
                                 title="Start Date"
-                                model="bookingModel.startDate"></bk-datepicker>
+                                model="vm.bookingModel.startDate"></bk-datepicker>
                         </div>
                         <div class="col-sm-6">
                             <bk-datepicker
                                 title="End Date"
-                                model="bookingModel.endDate"></bk-datepicker>
+                                model="vm.bookingModel.endDate"></bk-datepicker>
                         </div>
                     </div>
                     <div class="row">
@@ -45,15 +47,29 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <pre>{{ bookingModel | json }}</pre>
+                            <pre>{{ vm.bookingModel | json }}</pre>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="pull-right">
-                                <button type="button" class="btn btn-link">Clear</button>
-                                <button type="button" class="btn btn-primary">Search</button>
+                                <button
+                                    ng-click="vm.clear()"
+                                    type="button"
+                                    class="btn btn-link">Clear</button>
+                                <button
+                                    ng-click="vm.search()"
+                                    type="button"
+                                    class="btn btn-primary">Search</button>
                             </div>
+                        </div>
+                    </div>
+                    <div ng-if="vm.history.length > 0" class="row history">
+                        <h4>Previous Searches</h4>
+                        <div ng-repeat="h in vm.history track by $index">
+                            <span ng-bind-html="h"></span>
+                            <i ng-click="vm.removeFromHistory($index)"
+                               class="glyphicon glyphicon-remove pull-right"></i>
                         </div>
                     </div>
                 </form>

@@ -1,0 +1,17 @@
+<div class="form-group">
+    <label for="type">Amenities</label>
+    <select
+        ng-model="vm.bookingModel.type"
+        id="type"
+        class="form-control">
+        <option value="luxury">Luxury</option>
+        <option value="reasonable">Reasonable</option>
+        <option value="economy">Economy</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="from">Location</label>
+    <input
+        type="text" class="form-control" id="from" placeholder="Location"
+        ng-model="vm.bookingModel.location">
+</div>
