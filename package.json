@@ -8,7 +8,8 @@
     "copy:src": "copyfiles -u 1 src/**/* public",
     "copy": "npm run copy:src && npm run copy:vendor",
     "prestart": "npm run copy",
-    "start": "http-server public"
+    "start": "http-server public",
+    "watch": "watch \"npm run copy:src\" src"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,8 @@
     "bootstrap": "^3.3.6",
     "copyfiles": "^0.2.1",
     "http-server": "^0.8.5",
-    "moment": "^2.11.1"
+    "moment": "^2.11.1",
+    "watch": "^0.17.1"
   },
   "engines": {
     "node": "5.4.0",

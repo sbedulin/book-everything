@@ -11,24 +11,27 @@
     <script src="app/components/datepicker/datepicker.js"></script>
     <script src="app/components/location/location.service.js"></script>
     <script src="app/components/location/location.js"></script>
+    <script src="app/models/bk.models.js"></script>
+    <script src="app/models/BookingModel.js"></script>
+    <script src="app/models/FlightBookingModel.js"></script>
+    <script src="app/models/HotelBookingModel.js"></script>
+    <script src="app/models/CarBookingModel.js"></script>
     <script src="app/app.js"></script>
-    <script src="app/routes.js"></script>
-    <script src="app/bookingCtrl.js"></script>
 
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-<div ng-controller="BookingCtrl as vm"
+<div ng-controller="BookingAppCtrl as vm"
      class="main container">
     <!-- TODO: use default bootstrap tabs instead, or event better reimplement the component -->
 
     <uib-tabset class="tabs-left">
-        <uib-tab ng-repeat="tab in vm.tabs"
-                 active="tab.isActive"
-                 select="vm.select(tab.title)">
+        <uib-tab ng-repeat="(key, tab) in vm.tabs"
+                 ng-init="tmpl = 'app/templates/' + key + '.html'"
+                 active="tab.isActive">
 
-            <uib-tab-heading>
+            <uib-tab-heading ng-click="vm.tabSelectedByUser(tab)">
                 <i class="glyphicon glyphicon-info-sign"></i> {{ tab.title }}
             </uib-tab-heading>
 
@@ -48,7 +51,9 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <ui-view />
+
+                            <ng-include src="tmpl"></ng-include>
+
                         </div>
                     </div>
                     <div class="row">

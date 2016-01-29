@@ -43,6 +43,12 @@
     min-width: 74px;
     margin-right: 0;
     margin-bottom: 3px;
+    padding: 0;
+}
+
+.tabs-left > .nav-tabs uib-tab-heading {
+    display: block;
+    padding: 10px 15px;
 }
 
 .tabs-left > .nav-tabs {
