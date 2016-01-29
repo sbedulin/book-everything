@@ -6,7 +6,7 @@ angular
         'BookingApp.bkModels'
     ])
     .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/flights');
 
         $stateProvider
             .state('flights', { url: '/flights' })
@@ -53,4 +53,4 @@ angular
 
             activeTab = tab;
         });
-    });;
+    });
